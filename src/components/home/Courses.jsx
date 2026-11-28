@@ -6,28 +6,21 @@ const courses = [
     title: "Japanese Beginner",
     description:
       "Build a strong foundation in Japanese with Hiragana, Katakana, basic grammar and everyday conversation.",
-    topics: ["Hiragana & Katakana", "Basic Grammar", "Conversation"],
+    topics: ["Hiragana & Katakana", "Kanji Practice", "Basic Grammar", "Conversation","Writing", "Reading", "Class:6 day","2 Hour"],
   },
   {
     level: "N4",
     title: "Japanese Elementary",
     description:
       "Improve your grammar, vocabulary and speaking ability for everyday Japanese communication.",
-    topics: ["Grammar", "Vocabulary", "Speaking"],
+    topics: ["Kanji Practice", "Advance Grammar", "Conversation","Writing", "Reading", "Class:6 day","2 Hour"],
   },
   {
     level: "N3",
     title: "Japanese Intermediate",
     description:
       "Develop practical Japanese skills for study, work and more confident communication.",
-    topics: ["Reading", "Listening", "Conversation"],
-  },
-  {
-    level: "N2",
-    title: "Japanese Advanced",
-    description:
-      "Prepare for advanced Japanese communication and the JLPT N2 examination.",
-    topics: ["Advanced Grammar", "Reading", "JLPT"],
+    topics: ["Kanji Practice", "Advance Grammar", "Conversation","Writing", "Reading", "Class:6 day","2 Hour"],
   },
 ];
 

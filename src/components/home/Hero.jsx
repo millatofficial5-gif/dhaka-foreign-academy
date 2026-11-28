@@ -1,31 +1,44 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  FiPhone,
-  FiMessageCircle,
-  FiInstagram,
-  FiFacebook,
-  FiMail,
-  FiMapPin,
-} from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 
 const slides = [
   {
-    image: "/students/images1.webp",
-    result: "Successfully prepared for Japan",
-    text: "Complete Japanese language preparation with speaking practice, guidance and structured coaching.",
+    image: "/about/heroimage/Slide-04.jpg",
+    tag: "DHAKA FOREIGN ACADEMY",
+    title: "Your Dream of Japan Starts Here.",
+    description:
+      "Learn Japanese. Build confidence. Prepare for your future in Japan.",
   },
   {
-    image: "/students/images2.webp",
-    result: "Built confidence in Japanese",
-    text: "Regular classes and practical conversation training help students communicate with confidence.",
+    image: "/about/heroimage/Slide-01.jpg",
+    tag: "LEARN JAPANESE WITH CONFIDENCE",
+    title: "Learn Japanese. Open New Doors.",
+    description:
+      "Professional Japanese language training with expert guidance.",
   },
   {
-    image: "/students/images3.webp",
-    result: "Ready for the next journey",
-    text: "Prepare for education, career and new opportunities in Japan with proper language support.",
+    image: "/about/heroimage/Slide-02.jpg",
+    tag: "YOUR FUTURE, OUR COMMITMENT",
+    title: "Make Your Japan Dream Reality.",
+    description:
+      "Get ready for higher education and exciting opportunities in Japan.",
+  },
+  {
+    image: "/about/heroimage/Slide-03.jpg",
+    tag: "YOUR FUTURE, OUR COMMITMENT",
+    title: "Your Journey to Japan Begins Today.",
+    description:
+      "Get ready for higher education and exciting opportunities in Japan.",
+  },
+  {
+    image: "/about/heroimage/Slide-05.jpg",
+    tag: "YOUR FUTURE, OUR COMMITMENT",
+    title: "Build Your Future in Japan.",
+    description:
+      "Learn, grow, and take the next step toward your future in Japan.",
   },
 ];
 
@@ -35,7 +48,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, []);
@@ -43,1188 +56,134 @@ export default function Hero() {
   const slide = slides[currentSlide];
 
   return (
-    <section
-      className="
-        relative
-        min-h-[850px]
-        overflow-hidden
-        bg-transparent
-        pt-44
-        pb-20
-      "
-    >
-      {/* =========================================
-          BACKGROUND
-      ========================================== */}
+    <section className="relative isolate flex min-h-[680px] h-[90svh] max-h-[900px] w-full items-center overflow-hidden bg-black">
 
-      <div className="pointer-events-none absolute inset-0">
-        {/* Japan Red Glow */}
-
+      {/* BACKGROUND IMAGE SLIDER */}
+      <AnimatePresence mode="sync">
         <motion.div
-          animate={{
-            x: [0, 25, 0],
-            y: [0, -15, 0],
-            scale: [1, 1.08, 1],
-          }}
+          key={slide.image}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
           transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
+            opacity: { duration: 1.2 },
+            scale: { duration: 5.5, ease: "linear" },
           }}
-          className="
-            absolute
-            -left-40
-            top-20
-            h-[450px]
-            w-[450px]
-            rounded-full
-            bg-[#BC002D]/8
-            blur-[110px]
-          "
-        />
-
-        {/* Bangladesh Green Glow */}
-
-        <motion.div
-          animate={{
-            x: [0, -25, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.1, 1],
+          className="absolute inset-0 -z-20"
+          style={{
+            backgroundImage: `url(${slide.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="
-            absolute
-            -right-40
-            top-28
-            h-[500px]
-            w-[500px]
-            rounded-full
-            bg-[#006A4E]/8
-            blur-[120px]
-          "
         />
+      </AnimatePresence>
 
-        {/* Center Neutral Glow */}
+      {/* DARK IMAGE OVERLAY */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/55 to-black/15" />
 
-        <div
-          className="
-            absolute
-            left-1/2
-            top-0
-            h-[500px]
-            w-[700px]
-            -translate-x-1/2
-            rounded-full
-            bg-gray-100/70
-            blur-[110px]
-          "
-        />
-      </div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/45 via-transparent to-black/20" />
 
-      {/* =========================================
-          CONTENT
-      ========================================== */}
+      {/* CONTENT */}
+      <div className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
 
-      <div
-        className="
-          relative
-          mx-auto
-          max-w-7xl
-          px-5
-          sm:px-8
-        "
-      >
-        <div
-          className="
-            grid
-            items-center
-            gap-16
-            lg:grid-cols-[1.05fr_0.95fr]
-          "
-        >
-          {/* =======================================
-              LEFT CONTENT
-          ======================================== */}
+        <div className="max-w-3xl">
 
-          <motion.div
-            initial={{ opacity: 0, x: -35 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="max-w-2xl"
-          >
-            {/* Country Badge */}
-
+          {/* BRAND LABEL */}
+          <AnimatePresence mode="wait">
             <motion.div
+              key={`tag-${currentSlide}`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.15,
-                duration: 0.6,
-              }}
-              className="
-                mb-7
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-gray-200/80
-                bg-white/55
-                px-4
-                py-2
-                shadow-sm
-                backdrop-blur-xl
-              "
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.6 }}
+              className="mb-6 flex items-center gap-3"
             >
-              <span>🇧🇩</span>
-
-              <span className="text-xs font-semibold text-gray-500">
-                Bangladesh
-              </span>
-
-              <span className="h-4 w-px bg-gray-300" />
-
-              <span>🇯🇵</span>
-
-              <span className="text-xs font-semibold text-gray-500">
-                Japan
+              <span className="h-[2px] w-10 bg-[#BC002D]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-white/85 sm:text-sm">
+                {slide.tag}
               </span>
             </motion.div>
+          </AnimatePresence>
 
-            {/* Heading */}
-
-            <motion.h1
-              initial={{ opacity: 0, y: 25 }}
+          {/* MAIN HEADING */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${currentSlide}`}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{
-                delay: 0.25,
                 duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="
-                text-5xl
-                font-black
-                leading-[1.05]
-                tracking-[-0.045em]
-                text-gray-800
-                sm:text-6xl
-                lg:text-7xl
-              "
             >
-              Learn Japanese.
+              <h1 className="text-4xl font-black leading-[1.12] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                {slide.title}
+              </h1>
 
-              <br />
+              <p className="mt-6 max-w-xl text-sm leading-7 text-white/80 sm:text-lg">
+                {slide.description}
+              </p>
 
-              <span
-                className="
-                  bg-gradient-to-r
-                  from-[#BC002D]
-                  via-gray-700
-                  to-[#006A4E]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Build your future.
-              </span>
-            </motion.h1>
+              {/* BUTTONS */}
+              <div className="mt-9 flex flex-wrap gap-4">
 
-            {/* Description */}
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.4,
-                duration: 0.7,
-              }}
-              className="
-                mt-7
-                max-w-xl
-                text-base
-                leading-7
-                text-gray-500
-                sm:text-lg
-              "
-            >
-              Professional Japanese language coaching for students and
-              professionals in Bangladesh preparing for education, work and
-              opportunities in Japan.
-            </motion.p>
-
-            {/* Buttons */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.5,
-                duration: 0.7,
-              }}
-              className="mt-9 flex flex-wrap gap-4"
-            >
-              {/* Contact */}
-
-              <motion.a
-                href="/contact"
-                whileHover={{
-                  y: -4,
-                  scale: 1.02,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                className="
-                  group
-                  inline-flex
-                  items-center
-                  gap-3
-                  rounded-2xl
-                  bg-[#006A4E]
-                  px-6
-                  py-3.5
-                  text-sm
-                  font-bold
-                  text-white
-                  shadow-[0_10px_30px_rgba(0,106,78,0.18)]
-                "
-              >
-                Contact Us
-
-                <motion.span
-                  whileHover={{ x: 4 }}
-                  className="text-lg"
+                <a
+                  href="/courses"
+                  className="rounded-lg bg-[#006A4E] px-7 py-4 text-sm font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#00815E]"
                 >
-                  →
-                </motion.span>
-              </motion.a>
+                  Explore Courses →
+                </a>
 
-              {/* Courses */}
-
-              <motion.a
-                href="/courses"
-                whileHover={{
-                  y: -4,
-                  scale: 1.02,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                className="
-                  inline-flex
-                  items-center
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  bg-white/55
-                  px-6
-                  py-3.5
-                  text-sm
-                  font-bold
-                  text-gray-700
-                  shadow-sm
-                  backdrop-blur-xl
-                "
-              >
-                Explore Courses
-              </motion.a>
-            </motion.div>
-
-            {/* =====================================
-                CONTACT BAR
-            ====================================== */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.6,
-                duration: 0.7,
-              }}
-              className="
-                mt-7
-                flex
-                max-w-full
-                flex-wrap
-                items-center
-                gap-1.5
-                rounded-2xl
-                border
-                border-white/70
-                bg-white/40
-                p-1.5
-                shadow-[0_8px_30px_rgba(0,0,0,0.06)]
-                backdrop-blur-2xl
-              "
-            >
-              {/* WhatsApp 1 */}
-
-              <SocialButton
-                href="https://wa.me/880163278705"
-                icon={<FiMessageCircle />}
-                label="01632-78705"
-                color="green"
-              />
-
-              <Divider />
-
-              {/* WhatsApp 2 */}
-
-              <SocialButton
-                href="https://wa.me/8801919248151"
-                icon={<FiMessageCircle />}
-                label="01919-248151"
-                color="green"
-              />
-
-              <Divider />
-
-              {/* Instagram */}
-
-              <SocialButton
-                href="https://instagram.com/YOUR_ACCOUNT"
-                icon={<FiInstagram />}
-                label="Instagram"
-                color="red"
-              />
-
-              <Divider />
-
-              {/* Facebook */}
-
-              <SocialButton
-                href="https://www.facebook.com/profile.php?id=100094932286301"
-                icon={<FiFacebook />}
-                label="Facebook"
-                color="blue"
-              />
-
-              <Divider />
-
-              {/* Gmail */}
-
-              <ContactButton
-                href="mailto:dhakaforeignacademy@gmail.com"
-                icon={<FiMail />}
-                label="dhakaforeignacademy@gmail.com"
-                color="red"
-              />
-
-              <Divider />
-
-
-              {/* Location */}
-
-              <motion.a
-                href="https://maps.google.com/?q=Rising+Sun+Tower,Mirpur,Dhaka,Bangladesh"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{
-                  scale: 1.02,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-2.5
-                  rounded-xl
-                  bg-[#006A4E]/5
-                  px-3
-                  py-2
-                  text-sm
-                  font-semibold
-                  text-gray-600
-                  transition-all
-                  hover:bg-[#006A4E]/10
-                  hover:text-[#006A4E]
-                "
-              >
-                <span
-                  className="
-                    flex
-                    h-9
-                    w-9
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-xl
-                    bg-[#006A4E]/10
-                    text-[#006A4E]
-                    transition-transform
-                    duration-300
-                    group-hover:scale-110
-                  "
+                <a
+                  href="/contact"
+                  className="rounded-lg border border-white/70 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-gray-900"
                 >
-                  <FiMapPin className="h-4.5 w-4.5" />
-                </span>
+                  Apply Now
+                </a>
 
-                <span className="text-sm font-semibold">
-                  Rising Sun Complex, Benaroshi Polli, Paris Road, Mirpur-10, Dhaka-1216
-                </span>
-              </motion.a>
-            </motion.div>
-
-            {/* =====================================
-                STATS
-            ====================================== */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.7,
-                duration: 0.7,
-              }}
-              className="
-                mt-10
-                grid
-                max-w-xl
-                grid-cols-3
-                divide-x
-                divide-gray-200
-              "
-            >
-              <Stat
-                value="500+"
-                label="Students"
-              />
-
-              <Stat
-                value="N5–N4"
-                label="JLPT Levels"
-              />
-
-              <Stat
-                value="95%"
-                label="Satisfaction"
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* =======================================
-              RIGHT — SUCCESS SLIDER
-          ======================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 35,
-              scale: 0.96,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.9,
-              delay: 0.15,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="
-              relative
-              mx-auto
-              w-full
-              max-w-[520px]
-            "
-          >
-            {/* Green Glow */}
-
-            <motion.div
-              animate={{
-                scale: [1, 1.15, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                -right-10
-                -top-10
-                h-72
-                w-72
-                rounded-full
-                bg-[#006A4E]/8
-                blur-[90px]
-              "
-            />
-
-            {/* Red Glow */}
-
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.4, 0.7, 0.4],
-              }}
-              transition={{
-                duration: 9,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                -bottom-10
-                -left-10
-                h-60
-                w-60
-                rounded-full
-                bg-[#BC002D]/7
-                blur-[90px]
-              "
-            />
-
-            {/* Main Card */}
-
-            <motion.div
-              whileHover={{
-                y: -6,
-                rotateX: 1,
-                rotateY: -1,
-              }}
-              transition={{
-                duration: 0.4,
-              }}
-              className="
-                relative
-                overflow-hidden
-                rounded-[2.5rem]
-                border
-                border-white/80
-                bg-white/30
-                p-3
-                shadow-[0_30px_80px_rgba(0,0,0,0.12)]
-                backdrop-blur-2xl
-              "
-            >
-              <div
-                className="
-                  relative
-                  h-[470px]
-                  overflow-hidden
-                  rounded-[2rem]
-                  bg-gray-100
-                "
-              >
-                {/* Image Crossfade */}
-
-                <AnimatePresence mode="sync">
-                  <motion.img
-                    key={slide.image}
-                    src={slide.image}
-                    alt={slide.result}
-                    initial={{
-                      opacity: 0,
-                      scale: 1.08,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.98,
-                    }}
-                    transition={{
-                      opacity: {
-                        duration: 1.2,
-                        ease: "easeInOut",
-                      },
-                      scale: {
-                        duration: 6,
-                        ease: "easeOut",
-                      },
-                    }}
-                    className="
-                      absolute
-                      inset-0
-                      h-full
-                      w-full
-                      object-cover
-                    "
-                  />
-                </AnimatePresence>
-
-                {/* Image Gradient */}
-
-                <div
-                  className="
-                    absolute
-                    inset-x-0
-                    bottom-0
-                    h-60
-                    bg-gradient-to-t
-                    from-black/70
-                    via-black/20
-                    to-transparent
-                  "
-                />
-
-                {/* Slide Content */}
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentSlide}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -10,
-                    }}
-                    transition={{
-                      duration: 0.7,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="
-                      absolute
-                      bottom-6
-                      left-6
-                      right-6
-                      text-white
-                    "
-                  >
-                    <p
-                      className="
-                        text-xs
-                        font-semibold
-                        uppercase
-                        tracking-[0.2em]
-                        text-white/70
-                      "
-                    >
-                      Student Success
-                    </p>
-
-                    <h2 className="mt-2 text-2xl font-bold">
-                      {slide.result}
-                    </h2>
-
-                    <p className="mt-2 text-sm leading-6 text-white/75">
-                      {slide.text}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Slider Indicators */}
-
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                  px-3
-                  pt-4
-                "
-              >
-                <div className="flex gap-1.5">
-                  {slides.map((_, index) => (
-                    <motion.button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      aria-label={`Go to slide ${index + 1}`}
-                      animate={{
-                        width:
-                          currentSlide === index
-                            ? 32
-                            : 6,
-                      }}
-                      transition={{
-                        duration: 0.35,
-                        ease: "easeOut",
-                      }}
-                      className={`
-                        h-1.5
-                        rounded-full
-                        ${
-                          currentSlide === index
-                            ? "bg-[#BC002D]"
-                            : "bg-gray-300"
-                        }
-                      `}
-                    />
-                  ))}
-                </div>
-
-                <div
-                  className="
-                    text-xs
-                    font-medium
-                    text-gray-400
-                  "
-                >
-                  {String(currentSlide + 1).padStart(
-                    2,
-                    "0"
-                  )}
-
-                  <span className="mx-1 text-gray-300">
-                    /
-                  </span>
-
-                  {String(slides.length).padStart(
-                    2,
-                    "0"
-                  )}
-                </div>
               </div>
             </motion.div>
+          </AnimatePresence>
 
-            {/* =====================================
-                FLOATING CONTACT CARD
-            ====================================== */}
-
-            <motion.a
-              href="/contact"
-              initial={{
-                opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: [0, -4, 0],
-              }}
-              transition={{
-                opacity: {
-                  duration: 0.7,
-                  delay: 0.9,
-                },
-                y: {
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-              }}
-              whileHover={{
-                y: -8,
-              }}
-              className="
-                absolute
-                -bottom-7
-                -left-5
-                flex
-                items-center
-                gap-3
-                rounded-2xl
-                border
-                border-white/80
-                bg-white/65
-                px-5
-                py-3.5
-                shadow-[0_15px_40px_rgba(0,0,0,0.10)]
-                backdrop-blur-2xl
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-12
-                  w-12
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-xl
-                  bg-[#BC002D]/10
-                  text-[#BC002D]
-                "
-              >
-                <FiPhone className="h-6 w-6" />
-              </div>
-
-              <div>
-                <p
-                  className="
-                    text-[11px]
-                    font-semibold
-                    uppercase
-                    tracking-wider
-                    text-gray-400
-                  "
-                >
-                  Need information?
-                </p>
-
-                <p
-                  className="
-                    mt-0.5
-                    text-base
-                    font-bold
-                    text-gray-700
-                  "
-                >
-                  Talk to our team
-                </p>
-              </div>
-            </motion.a>
-
-            {/* =====================================
-                JAPAN BADGE
-            ====================================== */}
-
-            <motion.div
-              animate={{
-                y: [0, -7, 0],
-                rotate: [0, 3, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                -right-5
-                -top-6
-                flex
-                h-20
-                w-20
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-white
-                bg-white/65
-                text-2xl
-                shadow-lg
-                backdrop-blur-xl
-              "
-            >
-              🇯🇵
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
-      {/* =========================================
-          BOTTOM SERVICES
-      ========================================== */}
+      {/* SLIDER CONTROLS */}
+      <div className="absolute bottom-10 left-6 flex items-center gap-4 sm:left-10 lg:left-16">
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: 0.7,
-        }}
-        className="
-          relative
-          mx-auto
-          mt-20
-          max-w-7xl
-          px-5
-          sm:px-8
-        "
-      >
-        <div
-          className="
-            flex
-            flex-wrap
-            items-center
-            justify-center
-            gap-x-8
-            gap-y-3
-            border-t
-            border-gray-100
-            pt-6
-            text-xs
-            font-medium
-            text-gray-400
-          "
-        >
-          <span>
-            Japanese Language Coaching
-          </span>
-
-          <span
-            className="
-              h-1
-              w-1
-              rounded-full
-              bg-[#BC002D]
-            "
-          />
-
-          <span>
-            JLPT Preparation
-          </span>
-
-          <span
-            className="
-              h-1
-              w-1
-              rounded-full
-              bg-[#006A4E]
-            "
-          />
-
-          <span>
-            Japan Study Guidance
-          </span>
-
-          <span
-            className="
-              h-1
-              w-1
-              rounded-full
-              bg-gray-300
-            "
-          />
-
-          <span>
-            Visa Processing
-          </span>
+        <div className="flex items-center gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                currentSlide === index
+                  ? "w-12 bg-[#BC002D]"
+                  : "w-5 bg-white/50 hover:bg-white"
+              }`}
+            />
+          ))}
         </div>
-      </motion.div>
+
+        <span className="text-xs font-semibold tracking-widest text-white/70">
+          0{currentSlide + 1} / 0{slides.length}
+        </span>
+
+      </div>
+
+      {/* BOTTOM BRAND LINE */}
+      <div className="absolute bottom-0 left-0 h-1 w-full bg-white/10">
+        <motion.div
+          key={currentSlide}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          className="h-full bg-[#BC002D]"
+        />
+      </div>
+
     </section>
-  );
-}
-
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-function Divider() {
-  return (
-    <span
-      className="
-        hidden
-        h-5
-        w-px
-        bg-gray-200/70
-        sm:block
-      "
-    />
-  );
-}
-
-/* =========================================================
-   SOCIAL BUTTON
-========================================================= */
-
-function SocialButton({
-  href,
-  icon,
-  label,
-  color,
-}) {
-  const colors = {
-    green: {
-      hover:
-        "hover:bg-[#006A4E]/10 hover:text-[#006A4E]",
-      icon:
-        "bg-[#006A4E]/10 text-[#006A4E]",
-    },
-
-    red: {
-      hover:
-        "hover:bg-[#BC002D]/10 hover:text-[#BC002D]",
-      icon:
-        "bg-[#BC002D]/10 text-[#BC002D]",
-    },
-
-    blue: {
-      hover:
-        "hover:bg-blue-500/10 hover:text-blue-600",
-      icon:
-        "bg-blue-500/10 text-blue-600",
-    },
-  };
-
-  const theme = colors[color];
-
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{
-        scale: 1.03,
-      }}
-      whileTap={{
-        scale: 0.96,
-      }}
-      className={`
-        group
-        flex
-        items-center
-        gap-2.5
-        rounded-xl
-        px-3
-        py-2
-        text-sm
-        font-semibold
-        text-gray-600
-        transition-colors
-        ${theme.hover}
-      `}
-    >
-      <span
-        className={`
-          flex
-          h-9
-          w-9
-          shrink-0
-          items-center
-          justify-center
-          rounded-xl
-          transition-transform
-          duration-300
-          group-hover:scale-110
-          ${theme.icon}
-        `}
-      >
-        {icon}
-      </span>
-
-      <span className="text-sm font-semibold">
-        {label}
-      </span>
-    </motion.a>
-  );
-}
-
-/* =========================================================
-   CONTACT BUTTON
-========================================================= */
-
-function ContactButton({
-  href,
-  icon,
-  label,
-  color,
-}) {
-  const colors = {
-    red: {
-      hover:
-        "hover:bg-[#BC002D]/10 hover:text-[#BC002D]",
-      icon:
-        "bg-[#BC002D]/10 text-[#BC002D]",
-    },
-
-    gray: {
-      hover:
-        "hover:bg-gray-900/5 hover:text-gray-900",
-      icon:
-        "bg-gray-900/5 text-gray-700",
-    },
-
-    green: {
-      hover:
-        "hover:bg-[#006A4E]/10 hover:text-[#006A4E]",
-      icon:
-        "bg-[#006A4E]/10 text-[#006A4E]",
-    },
-  };
-
-  const theme = colors[color];
-
-  return (
-    <motion.a
-      href={href}
-      whileHover={{
-        scale: 1.03,
-      }}
-      whileTap={{
-        scale: 0.96,
-      }}
-      className={`
-        group
-        flex
-        items-center
-        gap-2.5
-        rounded-xl
-        px-3
-        py-2
-        text-sm
-        font-semibold
-        text-gray-600
-        transition-colors
-        ${theme.hover}
-      `}
-    >
-      <span
-        className={`
-          flex
-          h-9
-          w-9
-          shrink-0
-          items-center
-          justify-center
-          rounded-xl
-          transition-transform
-          duration-300
-          group-hover:scale-110
-          ${theme.icon}
-        `}
-      >
-        {icon}
-      </span>
-
-      <span className="text-sm font-semibold">
-        {label}
-      </span>
-    </motion.a>
-  );
-}
-
-/* =========================================================
-   STAT
-========================================================= */
-
-function Stat({ value, label }) {
-  return (
-    <motion.div
-      whileHover={{
-        y: -3,
-      }}
-      className="cursor-default"
-    >
-      <p
-        className="
-          text-2xl
-          font-black
-          text-gray-800
-        "
-      >
-        {value}
-      </p>
-
-      <p
-        className="
-          mt-1
-          text-xs
-          text-gray-400
-        "
-      >
-        {label}
-      </p>
-    </motion.div>
   );
 }

@@ -742,20 +742,25 @@ export default function AboutPage() {
       </section>
 
       {/* =====================================================
-          TEACHERS
+          BOARD OF DIRECTORS / LEADERSHIP
       ===================================================== */}
 
-      <section className="px-5 py-16 sm:px-8 lg:py-24">
+      <section className="relative w-full overflow-hidden bg-[#006A4E] px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
 
-        <div className="mx-auto max-w-7xl">
+        {/* SUBTLE BACKGROUND DECORATION */}
+        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-white/[0.04] blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-black/[0.08] blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl">
 
           <SectionHeading
-            eyebrow="Our Teachers"
-            title="Meet the people behind your learning"
-            text="Supportive instructors helping students build Japanese step by step."
+            eyebrow="Our Leadership"
+            title="Meet Our Board of Directors"
+            text="Meet the people behind Dhaka Foreign Academy, guiding our vision with dedication, experience and commitment."
+            dark={true}
           />
 
-          <div className="relative mt-9">
+          <div className="relative mt-9 sm:mt-12">
 
             <Swiper
               modules={[Autoplay]}
@@ -792,56 +797,23 @@ export default function AboutPage() {
 
             </Swiper>
 
-            {/* TEACHER ARROWS */}
-
-            <div className="mt-6 flex justify-end gap-2">
+            {/* LEADERSHIP SLIDER CONTROLS */}
+            <div className="mt-7 flex justify-end gap-3">
 
               <button
                 type="button"
-                onClick={() =>
-                  teacherSwiperRef.current?.slidePrev()
-                }
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-gray-200
-                  bg-white
-                  text-gray-700
-                  shadow-sm
-                  transition-all
-                  hover:border-[#BC002D]
-                  hover:bg-[#BC002D]
-                  hover:text-white
-                "
-                aria-label="Previous teacher"
+                onClick={() => teacherSwiperRef.current?.slidePrev()}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white shadow-sm transition-all duration-300 hover:bg-white hover:text-[#006A4E]"
+                aria-label="Previous leader"
               >
                 <FaArrowLeft className="text-xs" />
               </button>
 
               <button
                 type="button"
-                onClick={() =>
-                  teacherSwiperRef.current?.slideNext()
-                }
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-gray-900
-                  text-white
-                  shadow-sm
-                  transition-all
-                  hover:bg-[#006A4E]
-                "
-                aria-label="Next teacher"
+                onClick={() => teacherSwiperRef.current?.slideNext()}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#006A4E] shadow-sm transition-all duration-300 hover:scale-105 hover:bg-gray-100"
+                aria-label="Next leader"
               >
                 <FaArrowRight className="text-xs" />
               </button>
@@ -1327,6 +1299,7 @@ function SectionHeading({
   eyebrow,
   title,
   text,
+  dark = false,
 }) {
   return (
     <motion.div
@@ -1338,43 +1311,29 @@ function SectionHeading({
         amount: 0.3,
       }}
     >
-
       <p
-        className="
-          text-xs
-          font-bold
-          uppercase
-          tracking-[0.18em]
-          text-[#BC002D]
-        "
+        className={`text-xs font-bold uppercase tracking-[0.18em] ${
+          dark ? "text-emerald-200" : "text-[#BC002D]"
+        }`}
       >
         {eyebrow}
       </p>
 
       <h2
-        className="
-          mt-2
-          text-2xl
-          font-black
-          tracking-tight
-          sm:text-3xl
-        "
+        className={`mt-2 text-2xl font-black tracking-tight sm:text-3xl ${
+          dark ? "text-white" : "text-gray-900"
+        }`}
       >
         {title}
       </h2>
 
       <p
-        className="
-          mt-2
-          max-w-xl
-          text-sm
-          leading-6
-          text-gray-500
-        "
+        className={`mt-3 max-w-xl text-sm leading-7 ${
+          dark ? "text-white/80" : "text-gray-500"
+        }`}
       >
         {text}
       </p>
-
     </motion.div>
   );
 }

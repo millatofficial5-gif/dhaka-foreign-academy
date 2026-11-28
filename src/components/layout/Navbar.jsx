@@ -93,15 +93,14 @@ export default function Navbar() {
           >
             <div
               className="
-                flex h-11 w-11 shrink-0
+                flex h-14 w-14 shrink-0
                 items-center justify-center
                 overflow-hidden
-                rounded-2xl
-                border border-white/80
-                bg-white/50
-                p-1
-                shadow-[0_5px_18px_rgba(0,0,0,0.05)]
-                backdrop-blur-xl
+                rounded-full
+                border-0
+                bg-[#006A4E]
+                p-0
+                shadow-[0_5px_18px_rgba(0,0,0,0.08)]
                 transition-all duration-500
                 group-hover:scale-105
                 group-hover:rotate-1
@@ -110,7 +109,7 @@ export default function Navbar() {
               <img
                 src="/dhaka-foreign-academy.webp"
                 alt="Dhaka Foreign Academy"
-                className="h-full w-full object-contain"
+                className="h-full w-full rounded-full object-cover"
               />
             </div>
 
